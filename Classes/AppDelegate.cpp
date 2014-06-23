@@ -26,6 +26,45 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
+    auto fileUtils = FileUtils::getInstance();
+    auto screenSize = glview->getFrameSize();
+    std::vector<std::string> resDirOrders;
+
+    //check wich asset device requires
+
+    if (1920 == screenSize.width || 1920 == screenSize.height)
+    {
+    	resDirOrders.push_back("FullHD");
+    	resDirOrders.push_back("800");
+
+    	glview->setDesignResolutionSize(1920,1080,ResolutionPolicy::NO_BORDER);
+    }
+    else if (1280 == screenSize.width || 1280 == screenSize.height)
+    	    {
+    			resDirOrders.push_back("HD");
+    			resDirOrders.push_back("800");
+
+    	    	glview->setDesignResolutionSize(1280,800,ResolutionPolicy::NO_BORDER);
+    	    }
+    else if (800 == screenSize.width || 800 == screenSize.height)
+    {
+    	resDirOrders.push_back("800");
+
+    	glview->setDesignResolutionSize(800,480,ResolutionPolicy::NO_BORDER);
+    }
+    else
+    {
+    	resDirOrders.push_back("800");
+		resDirOrders.push_back("HD");
+		resDirOrders.push_back("FullHD");
+
+		glview->setDesignResolutionSize(480,320,ResolutionPolicy::NO_BORDER);
+    }
+
+    fileUtils->setSearchPaths(resDirOrders);
+
+
+
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
 

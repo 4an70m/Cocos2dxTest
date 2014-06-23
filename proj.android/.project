@@ -123,5 +123,20 @@
 			<type>2</type>
 			<locationURI>PARENT-1-PROJECT_LOC/cocos2d/cocos/2d/platform/android/java/src</locationURI>
 		</link>
+		<link>
+			<name>assets/800</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Resources/800</locationURI>
+		</link>
+		<link>
+			<name>assets/FullHD</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Resources/FullHD</locationURI>
+		</link>
+		<link>
+			<name>assets/HD</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Resources/HD</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>
