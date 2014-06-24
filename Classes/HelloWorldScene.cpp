@@ -36,6 +36,8 @@ bool HelloWorld::init()
     
     this->addChild(mySprite);
 
+    //Tutorials 5-12
+
     //positioning functions
     //uncomment to try
 
@@ -83,7 +85,67 @@ bool HelloWorld::init()
 
 	//mySprite->runAction(action7);
 
+    //Tutorial 13-22
 
+    //scales
+    //uncomment to try
+
+    //relative scale
+    //scales for t time, x - times for x-coordinate and y - times for y-coordinate
+    //auto action1 = ScaleBy::create(3, 3, 0.5);
+
+    //mySprite->runAction(action1);
+
+    //absolute scale
+    //scales for t time, x - times for x-coordinate and y - times for y-coordinate
+	//auto action2 = ScaleTo::create(3, 3, 0.5);
+
+	//mySprite->runAction(action2);
+
+    //rotation
+	//uncomment to try
+
+    //rotation, relative to the current angle state
+    //auto action3 = RotateBy::create(3, 90);
+
+    //mySprite->runAction(action3);
+
+    //rotation to the absolute position
+	//auto action4 = RotateTo::create(3, 90);
+
+	//mySprite->runAction(action4);
+
+    //changes the color
+    //uncomment to try
+
+    //changes the sprite's color, affecting r g b, relative to current rgb state
+    //auto action5 = TintBy::create(3, -255, 0, 0);
+
+    //mySprite->runAction(action5);
+
+    //changes the sprite's color, affecting r g b to absolute numbers
+	//auto action6 = TintTo::create(3, 255, 0, 0);
+
+	//mySprite->runAction(action6);
+
+    //fading
+	//uncomment to try
+
+	//changes the sprite's opacity to a particular number
+	//auto action7 = FadeTo::create(3, 100);
+
+	//mySprite->runAction(action7);
+
+    //changes the sprite's opacity to visible
+    //mySprite->setOpacity(0);
+	//auto action8 = FadeIn::create(3);
+
+	//mySprite->runAction(action8);
+
+    //changes the sprite's opacity to zero
+	//auto action9 = FadeOut::create(3);
+
+	//mySprite->runAction(action9);
 
     return true;
 }
