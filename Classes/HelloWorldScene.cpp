@@ -85,7 +85,7 @@ bool HelloWorld::init()
 
 	//mySprite->runAction(action7);
 
-    //Tutorial 13-22
+    //Tutorial 13-21
 
     //scales
     //uncomment to try
@@ -146,6 +146,45 @@ bool HelloWorld::init()
 	//auto action9 = FadeOut::create(3);
 
 	//mySprite->runAction(action9);
+
+    //Tutorial 22-26
+
+	//repeating
+	//uncomment to try
+
+    //auto actionRotation = RotateBy::create(2,45);
+    //action x is repeated y times
+    //auto action1 = Repeat::create(actionRotation,5);
+
+    //mySprite->runAction(action1);
+
+    //repeat forever action
+
+    //auto rotateAction = RotateBy(1, 90);
+    //auto action2 = RepeatForever(rotateAction);
+
+    //mySprite->runAction(action2);
+
+    //sequence of actions
+    //actions are performed one by one
+    //auto rotateAction = RotateBy::create(2,118);\
+    //auto moveAction = MoveBy::create(5, Point(100, -90));
+    //auto action3 = Sequence::create(rotateAction, moveAction, NULL);
+
+    //mySprite->runAction(action3);
+
+    //skewing (наклоны)
+    //time, skew x-coordinate, skew y-coordinate
+    //skew is set relative to current skew state
+    //auto action4 = SkewBy::create(4, 70, 50);
+
+    //mySprite->runAction(action4);
+
+	//new skew is absolute
+	//auto action5 = SkewTo::create(6, 70, 50);
+
+	//mySprite->runAction(action5);
+
 
     return true;
 }
