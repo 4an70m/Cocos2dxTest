@@ -19,6 +19,20 @@ public:
     CREATE_FUNC(HelloWorld);
 
     cocos2d::Sprite *mySprite;
+
+    void StopEffect(float dt);
+
+    void StopEffects(float dt);
+
+    void StopMusic(float dt);
+
+    void PlayEffect(float dt);
+
+    void PauseMusic(float dt);
+
+    void ResumeMusic(float dt);
+
+    unsigned int soundInt;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

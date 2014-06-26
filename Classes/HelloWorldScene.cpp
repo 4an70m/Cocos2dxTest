@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -16,6 +17,7 @@ Scene* HelloWorld::createScene()
     // return the scene
     return scene;
 }
+
 
 // on "init" you need to initialize your instance
 bool HelloWorld::init()
@@ -185,10 +187,80 @@ bool HelloWorld::init()
 
 	//mySprite->runAction(action5);
 
+    //Tutorial 27-34
+    //playing sound
+
+    //change sound effect volume
+    //CocosDenshion::SimpleAudioEngine::getInstance()->setEffectsVolume(0.5);
+
+    //change music background music
+    //CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.5);
+
+    //play sound 1 time
+    //CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/Collide.wav");
+
+    //play sound infinite times
+    //soundInt = CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/Collide.wav", true);
+
+    //function stops all effects after 5 seconds
+    //this->schedule(schedule_selector(HelloWorld::StopEffects), 5.0f);
+
+    //function stops effect with soundInt id after 5 seconds
+    //this->schedule(schedule_selector(HelloWorld::StopEffect), 5.0f);
+
+    //play background music
+    //load it
+    //CocosDenshion::SimpleAudioEngine::getInstance()->preloadBackgroundMusic("audio/mainMenuMusic.mp3");
+    //and play once
+    //CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("audio/mainMenuMusic.mp3");
+    //or infinite times
+    //CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("audio/mainMenuMusic.mp3", true);
+
+    //stop background music
+    //this->schedule(schedule_selector(HelloWorld::StopMusic), 5.0f);
+
+    //preloading sound effect
+    //CocosDenshion::SimpleAudioEngine::getInstance()->preloadEffect("audio/Collide.wav");
+    //this->schedule(schedule_selector(HelloWorld::PlayEffect), 5.0f);
+
+    //pausing music
+    //this->schedule(schedule_selector(HelloWorld::PauseMusic), 3.0f);
+    //resuming music
+    //this->schedule(schedule_selector(HelloWorld::ResumeMusic), 6.0f);
+
 
     return true;
 }
 
+void HelloWorld::PauseMusic(float dt)
+{
+	CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+}
+
+void HelloWorld::ResumeMusic(float dt)
+{
+	CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+}
+
+void HelloWorld::PlayEffect(float dt)
+{
+	CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("audio/Collide.wav", true);
+}
+
+void HelloWorld::StopEffects(float dt)
+{
+	CocosDenshion::SimpleAudioEngine::getInstance()->stopAllEffects();
+}
+
+void HelloWorld::StopEffect(float dt)
+{
+	CocosDenshion::SimpleAudioEngine::getInstance()->stopEffect(soundInt);
+}
+
+void HelloWorld::StopMusic(float dt)
+{
+	CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+}
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
