@@ -228,6 +228,29 @@ bool HelloWorld::init()
     //resuming music
     //this->schedule(schedule_selector(HelloWorld::ResumeMusic), 6.0f);
 
+    //Tutorial 35-43
+    //Touch events
+
+    //single touch listener
+
+    //adding event listener
+    //auto singleListener = EventListenerTouchOneByOne::create();
+    //singleListener->setSwallowTouches(true);
+
+    //singleListener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
+    //singleListener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
+    //singleListener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+
+    //_eventDispatcher->addEventListenerWithSceneGraphPriority(singleListener, this);
+
+    //multi touch listener
+
+    //auto multiTouchListener = EventListenerTouchAllAtOnce::create();
+    //multiTouchListener->onTouchesBegan = CC_CALLBACK_2(HelloWorld::onTouchesBegan, this);
+    //multiTouchListener->onTouchesMoved = CC_CALLBACK_2(HelloWorld::onTouchesMoved, this);
+    //multiTouchListener->onTouchesEnded = CC_CALLBACK_2(HelloWorld::onTouchesEnded, this);
+
+    //_eventDispatcher->addEventListenerWithSceneGraphPriority(multiTouchListener, this);
 
     return true;
 }
@@ -260,6 +283,38 @@ void HelloWorld::StopEffect(float dt)
 void HelloWorld::StopMusic(float dt)
 {
 	CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+}
+
+bool HelloWorld::onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+	CCLog("onTouchBegan x = %f, y = %f", touch->getLocation().x, touch->getLocation().y);
+
+	return true;
+}
+
+void HelloWorld::onTouchMoved(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+	CCLog("onTouchMoved x = %f, y = %f", touch->getLocation().x, touch->getLocation().y);
+}
+
+void HelloWorld::onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event)
+{
+	CCLog("onTouchEnded x = %f, y = %f", touch->getLocation().x, touch->getLocation().y);
+}
+
+void HelloWorld::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event)
+{
+	CCLog("MULTI TOUCH BEGAN");
+}
+
+void HelloWorld::onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event)
+{
+	CCLog("MULTI TOUCH MOVED");
+}
+
+void HelloWorld::onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event)
+{
+	CCLog("MULTI TOUCH ENDED");
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
