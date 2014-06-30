@@ -40,6 +40,14 @@ public:
     void onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event);
     void onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event);
 
+    void Play(cocos2d::Ref *pSender);
+    void Highscores(cocos2d::Ref *pSender);
+    void Settings(cocos2d::Ref *pSender);
+
+    void ImageButton(cocos2d::Ref *pSender);
+
+    void onAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *event);
+
     unsigned int soundInt;
 };
 

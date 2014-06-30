@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "NewScene.h"
 
 USING_NS_CC;
 
@@ -228,7 +229,7 @@ bool HelloWorld::init()
     //resuming music
     //this->schedule(schedule_selector(HelloWorld::ResumeMusic), 6.0f);
 
-    //Tutorial 35-43
+    //Tutorial 35-42
     //Touch events
 
     //single touch listener
@@ -251,6 +252,45 @@ bool HelloWorld::init()
     //multiTouchListener->onTouchesEnded = CC_CALLBACK_2(HelloWorld::onTouchesEnded, this);
 
     //_eventDispatcher->addEventListenerWithSceneGraphPriority(multiTouchListener, this);
+
+    //Tutorials 43-46
+    //Menues
+
+    //auto menu_item_1 = MenuItemFont::create("Play", CC_CALLBACK_1(HelloWorld::Play, this));
+    //auto menu_item_2 = MenuItemFont::create("Highscores", CC_CALLBACK_1(HelloWorld::Highscores, this));
+    //auto menu_item_3 = MenuItemFont::create("Settings", CC_CALLBACK_1(HelloWorld::Settings, this));
+    //auto menu_item_4 = MenuItemImage::create("CloseNormal.png", "CloseSelected.png", CC_CALLBACK_1(HelloWorld::ImageButton, this));
+
+    //manual menu items positioning
+    //menu_item_1->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 4));
+    //menu_item_2->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 3));
+    //menu_item_3->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 2));
+    //menu_item_4->setPosition(Point(visibleSize.width / 2, (visibleSize.height / 5) * 1));
+
+    //auto *menu = Menu::create(menu_item_1, menu_item_2, menu_item_3, menu_item_4, NULL);
+    //auto menu items positioning
+    //menu->alignItemsVertically();
+    //menu->setPosition(Point(0, 0));
+    //this->addChild(menu);
+
+    //Tutorials 47-51
+    //Scene stuff
+
+    //Tutorial 52
+    //Sprite animation
+
+    //auto action = MoveBy::create(3, Point(100, 0));
+
+    //mySprite->runAction(EaseElasticInOut::create(action, 0.5));
+    //mySprite->runAction(EaseBounceIn::create(action));
+
+    //Tutorial 53
+    //Accelerometer
+
+    Device::setAccelerometerEnabled(true);
+    auto listener = EventListenerAcceleration::create(CC_CALLBACK_2(HelloWorld::onAcceleration, this));
+
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
     return true;
 }
@@ -315,6 +355,44 @@ void HelloWorld::onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, co
 void HelloWorld::onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event)
 {
 	CCLog("MULTI TOUCH ENDED");
+}
+
+void HelloWorld::Play(cocos2d::Ref *pSender)
+{
+	CCLog("Play");
+	//creating new scene
+	auto scene = NewScene::createScene();
+	//pushing it to the view
+	Director::getInstance()->pushScene(scene);
+	//now we see a new scene 'NewScene'
+	//it's on the top of a stack, while previous scene is right below it
+}
+
+void HelloWorld::Highscores(cocos2d::Ref *pSender)
+{
+	CCLog("Highscores");
+
+	//replace scene pops the current scene and pushes to stack a new scene
+	//which is actually a replacement, yeah
+	auto scene = NewScene::createScene();
+
+	//transition
+	Director::getInstance()->replaceScene(TransitionFlipX::create(2, scene));
+}
+
+void HelloWorld::Settings(cocos2d::Ref *pSender)
+{
+	CCLog("Settings");
+}
+
+void HelloWorld::ImageButton(cocos2d::Ref *pSender)
+{
+	CCLog("IMAGE BUTTON");
+}
+
+void HelloWorld::onAcceleration(cocos2d::Acceleration *acc, cocos2d::Event *event)
+{
+	CCLog("%f", acc->z);
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
